@@ -4,10 +4,12 @@ Open the  .txt file in VScode editor and follow instructions to finish the lab.
 
 Step2  (Create a Key Pair)
 Login into your AWS Console 
+type "key pair" on aws search console to locate key pair under AWS features
 Create a Key pair with name "Linux" and key file format ".pem"
 Download pem file into your local machine
 
 Step 3(Create Security group)
+type "security group" on aws search bar, click on security group for VPC features
 Create a Security Group with name “PublicSG” and give it any description you prefer
 Select your default VPC
 With the following  Inbound rule
@@ -15,6 +17,8 @@ Type      Source
 SSH         My IP
 HTTP       Anywhere IPv4
 HTTP       Anywhere IPv6
+
+NOTE: security groups allow all outbound traffic by default
 
 Step 4 (Create a Launch Template)
 Create Launch template , give it a name and description you prefer.
@@ -32,10 +36,22 @@ systemctl start httpd
 systemctl enable httpd
 echo "Hello World from $(hostname -f)" > /var/www/html/index.html
 echo "Healthy" > /var/www/html/health.html
+Select Launch template
+
+Step 5
+Launching an instance from the created Launch template
+
+SELECT the launch template you created
+SELECT action and pick "launch instance from template" option
+Scroll down and Select "Launch instance"
+Go to instances
+Select the newly created instance
+Copy the instance public IP address and paste in on a web browser.
+Output: Hello World from ip.region.compute.internal
 
 Step 5 (Documentation)
 Modify and update every step you took to achieve the lab, that was not captured in the lab instruction in your local repo Lab2.txt file and save.
 On the terminal run command git add Lab2.txt
-Git commit -m “launch template demo”
+sudo git 
 Push to your personal repo.
 
