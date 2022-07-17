@@ -52,6 +52,7 @@ Output: Hello World from ip.region.compute.internal
 Step 5 (Documentation)
 Modify and update every step you took to achieve the lab, that was not captured in the lab instruction in your local repo Lab2.txt file and save.
 On the terminal run command git add Lab2.txt
-sudo git 
+sudo git commit -m "launch template demo"
 Push to your personal repo.
+command: git push "the url of your repo"
 
