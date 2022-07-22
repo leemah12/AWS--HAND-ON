@@ -1,0 +1,39 @@
+Lab3
+Step1 
+On VScode terminal navigate to directory AWSLabs and run command git pull https://github.com/awscloudessentials/intro-to-aws-lab.git
+Open the new file(Lab3) in the editor, to allow you add steps you took to complete the lab.
+
+Step2
+On AWS Console, 
+Go to EC2 dashboard and click launch instances from template.
+Select the template created from previous lab.
+Select Resource tags and input key "Name" and Value "Webserver"
+Lauch instance.
+Click on " instances"
+Copy the Public IPv4 address or the Public DNS Address and paste on a new browser page" It should display a webpage with the private ip of your instance"
+(Hello World from ip-<private ip address>.ec2.internal)
+Screenshot and send to the group chat for verification.
+
+Step3
+Go back to your EC2 instance and connect to it using the 'aws cloud shell" not EC2 Connect.
+Upload the key pair of the instance from your local machine into the cloud shell
+Run the command ls -la to verify that your key is uploaded correctly.
+Run command sudo ssh -i "<keypair name" ec2-user@<public-ip-address>.compute-1.amazonaws.com
+To connect to your EC2 instance
+Send screenshoot for confirmation.
+Once confirmed, terminate your instance.
+
+Connecting to instance with wsl ubuntu server
+open wsl ubuntu on VScode
+create a folder name "LINUX" on your desktop
+copy your keypair into the folder "LINUX"
+Navigate into the folder on your VScode terminal
+type this command chmod 400 keypairname.pem
+type this command "sudo ssh -i "linux.pem" ec2-user@ec2-52-42-64-191.us-west-2.compute.amazonaws.com"
+type "yes" to authenticate and connect to instance
+
+Step3(Documentation)
+Document all the steps in the file you have opened in the editor.
+Save and git add and git commit
+Push to your personal repo.
+

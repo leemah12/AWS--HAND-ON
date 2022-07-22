@@ -36,6 +36,7 @@ systemctl start httpd
 systemctl enable httpd
 echo "Hello World from $(hostname -f)" > /var/www/html/index.html
 echo "Healthy" > /var/www/html/health.html
+<<<<<<< HEAD
 Select Launch template
 
 Step 5
@@ -48,6 +49,9 @@ Go to instances
 Select the newly created instance
 Copy the instance public IP address and paste in on a web browser.
 Output: Hello World from ip.region.compute.internal
+=======
+Click create launch template
+>>>>>>> b5cdeb80d6c33026e254f19b3bc293f9719adb8b
 
 Step 5 (Documentation)
 Modify and update every step you took to achieve the lab, that was not captured in the lab instruction in your local repo Lab2.txt file and save.
