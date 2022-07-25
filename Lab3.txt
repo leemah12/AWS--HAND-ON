@@ -27,7 +27,7 @@ Connecting to instance with wsl ubuntu server
 open wsl ubuntu on VScode
 create a folder name "LINUX" on your desktop
 copy your keypair into the folder "LINUX"
-Navigate into the folder on your VScode terminal
+Navigate ginto the folder on your VScode terminal
 type this command chmod 400 keypairname.pem
 type this command "sudo ssh -i "linux.pem" ec2-user@ec2-52-42-64-191.us-west-2.compute.amazonaws.com"
 type "yes" to authenticate and connect to instance

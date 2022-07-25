@@ -1,4 +1,6 @@
 Lab4 
+How to use a snapshot from an instance ebs vol, to create ebs vol for another instance
+
 Step1 
 On VScode terminal navigate to directory AWSLabs and run command git pull https://github.com/awscloudessentials/intro-to-aws-lab.git
 Open the new file(Lab3) in the editor, to allow you add steps you took to complete the lab.
@@ -40,5 +42,6 @@ Send screenshot for confirmation.
 Step 6
 Once confirmed, kindly clean up your AWS account.
 Edit the file in VSCode editor, save and push to your personal remote repo.
-
-
+git add 
+git commit
+git push to "url"
