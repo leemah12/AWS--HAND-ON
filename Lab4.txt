@@ -1,0 +1,44 @@
+Lab4 
+Step1 
+On VScode terminal navigate to directory AWSLabs and run command git pull https://github.com/awscloudessentials/intro-to-aws-lab.git
+Open the new file(Lab3) in the editor, to allow you add steps you took to complete the lab.
+
+Step 2:(NB: Use key pair and security group created in former lab)
+Launch an EC2 Instance.
+SSH into your instance and create a text file with name "ebs_backup.txt" using the command sudo touch "ebs_backup.txt"
+Run command ls -la and send screenshot for confirmation
+Go to Elastic Block Store tab, click Snapshots
+Create snapshot, select "Instance", select your instance ID from the drop down button
+Give description "snapshot from instance1", Tag Key= Name and Value= snapshot1
+Create snapshot
+Wait for snapshot status to show" Completed" then terminate your instance. 
+
+Step 3
+Go to Elastic Block Store tab, click Snapshots
+Select the snapshot created above, go to actions select "create volume from snapshot"
+Note the AZ, add Tag Tag Key= Name and Value=Restored volume
+Delete your snapshot.
+Go to Elastic Block Store tab, click Volume, verify the existance of your new volume.
+
+Step 4 (NB: Use key pair and security group created in former lab)
+Spin up another instance in the same AZ that you created the restored volume.
+Select the correct AZ under network settings
+Create instance.
+Stop your instance( not terminate), note the name of the volume attached to the instance.
+Go to Elastic Block Store tab, click Volumes
+Select the volume attached to the instance, click detach volume then
+Select the Restored volume showing status available,click actions, click attach volume
+Select your new instance from the drop down button,modify the volume name path from /dev/sdf to /dev/xvda and click attach volume.
+Delete the volume you just detached.
+
+Step 5
+Select the new instance, start the instance.
+SSH into the new instance and run command ls -la
+This should show the file name "ebs_backup.txt"
+Send screenshot for confirmation.
+
+Step 6
+Once confirmed, kindly clean up your AWS account.
+Edit the file in VSCode editor, save and push to your personal remote repo.
+
+
