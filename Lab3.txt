@@ -23,13 +23,13 @@ To connect to your EC2 instance
 Send screenshoot for confirmation.
 Once confirmed, terminate your instance.
 
-Connecting to instance with wsl ubuntu server
+Connecting to instance with wsl ubuntu server or git bash
 open wsl ubuntu on VScode
 create a folder name "LINUX" on your desktop
 copy your keypair into the folder "LINUX"
 Navigate ginto the folder on your VScode terminal
 type this command chmod 400 keypairname.pem
-type this command "sudo ssh -i "linux.pem" ec2-user@ec2-52-42-64-191.us-west-2.compute.amazonaws.com"
+type this command  (go to conect on the ec2  you selected, click on "ssh seesion", copy the coommand  that looks like:  ssh -i "terra.pem" ec2-user@ec2-54-237-173-111.compute-1.amazonaws.com)
 type "yes" to authenticate and connect to instance
 
 Step3(Documentation)
