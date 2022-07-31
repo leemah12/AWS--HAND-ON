@@ -18,16 +18,16 @@ Select the newly created route table,click on "Routes"
 Click "edit routes", click "add route"
 Under destination input "0.0.0.0/0"  and target Nat gateway, select the NATGW created in Step 2
 Save changes
-Select the default route table,click on subnet associations, unselect one of your subnets,note the subnet ID(this is the subnet where you would be creating your private instance)
+Select the default route table,click on subnet associations, unselect one of your subnets,(donot unselect the subnet you created your nat gateway) also note the subnet ID(this is the subnet where you would be creating your private instance)
 Click save associations
 Select the new route table you created,click subnet associations ->edit subnet associations-->select the subnet you unselected in the step above -->save associations
 
-
-Step 4 (Use same keypair to create both EC2 instances)
+you will need two security group for this task. (one for your public ec2 that allow "http" traffic from anywhere in ipv4, and "tcp" that allows all traffic from anywhere in ipv4) the other one for private ec2
+Step 4 (Use same keypair to create both EC2 instances) 
 Create an EC2 with a public IP with name " public-ec2" and access to internet and ssh connection
 Create another EC2 with only a private IP address with name "private-ec2"
-Edit the "Network settings" and select the subnet in step 3 with route to the NATGW, also change "Auto-assign public IP" to disable
-The security group for the private-ec2 should allow "All IPv4" from source "Private IP address of the public instance" and SSH from All.
+Edit the "Network settings" and select the subnet in step 3 with route to the NATGW (use the subnet you selected in line 23), also change "Auto-assign public IP" to disable
+The security group for the private-ec2 should allow "All ICMP IPv4" from source "Private IP address of the public instance" and SSH from All.
 
 Step 5 (setting up ssh agent forwarding)
 On WSL, get to the location of your keypair and run the following commands
