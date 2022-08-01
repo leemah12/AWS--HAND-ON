@@ -1,0 +1,86 @@
+Lab 6
+Step 1
+On VScode terminal navigate to directory AWSLabs and run command git pull https://github.com/awscloudessentials/intro-to-aws-lab.git
+Open the new file(Lab6) in the editor, to allow you add steps you took to complete the lab.
+
+Step 2
+Create an EC2 instance with name Webserver1
+A keypair and a public IP address
+Security group that allows SSH traffic 
+Under Advanced details, add the script below in the userdata portion.
+#!/bin/bash
+# Please make sure to launch Amazon Linux 2
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello World from Webserver1</h1>" > /var/www/html/index.html
+echo "<h1>Healthy</h1>" > /var/www/html/health.html
+Click Launch instance
+
+Step 3
+Create an EC2 instance with name Webserver2
+A keypair and a public IP address
+Security group that allows SSH traffic 
+Under Advanced details, add the script below in the userdata portion.
+#!/bin/bash
+# Please make sure to launch Amazon Linux 2
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello World from Webserver2</h1>" > /var/www/html/index.html
+echo "<h1>Healthy</h1>" > /var/www/html/health.html
+Click Launch instance
+
+Step 4
+On EC2 dashboard click Target groups
+Create target group
+Select instances
+Give it the name "WebserverTG"
+Leave everything as default
+Under Health checks path paste: health.html 
+Click Next, select the 2 instances created above and 
+Click "Include as pending below"
+Create target group
+
+Step 5
+On EC2 dashboard click Load Balancers
+Create Load Balancer
+Select Application Load Balancer and clcik Create
+Give it name "ALB"
+Leave it as internet facing and IPv4
+Select your default VPC and all your public subnets
+Note the name of the default SG assigned to the ALB
+Under Listeners and routing, --> Default action --> select the target group created in step 4
+Create load balancer
+
+Step 6 (Integration)
+Go to the SG of each of the instances and modify Inbound rule
+Edit inbound rule allowing All Traffic from the SG of your load balancer
+Save rules
+Select the Target group created in step 4
+Select the 2 instances and click on register targets
+Verify that the health status shows healthy.
+
+Step 7
+On EC2 dashboard click Load Balancers
+Copy the DNS name of the ALB and 
+post of the chat for verification
+Copy the DNS name of the ALB and paste on a new webpage 
+Send screenshot
+Refresh to verify that the ALB is balancing the traffic between Webserver 1 and 2
+Send Screenshot
+On the DNS name of the ALB add /health.html on a webpage
+Send screenshot
+
+Step 7
+Once confirmed, kindly clean up your AWS account.
+Edit the file in VSCode editor, save and push to your personal remote repo.
+
+
+
+
+
+
+
