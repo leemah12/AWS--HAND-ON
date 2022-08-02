@@ -45,13 +45,15 @@ Click "Include as pending below"
 Create target group
 
 Step 5
+create a secrity group for our load balancer, edit inbound rule to allow 'http' traffic from anywhere in ipv4 and 'ssh' traffic from anywhere in ipv4  
 On EC2 dashboard click Load Balancers
 Create Load Balancer
 Select Application Load Balancer and clcik Create
 Give it name "ALB"
 Leave it as internet facing and IPv4
 Select your default VPC and all your public subnets
-Note the name of the default SG assigned to the ALB
+select the load balancer SG you created
+Note the name SG assigned to the ALB
 Under Listeners and routing, --> Default action --> select the target group created in step 4
 Create load balancer
 
