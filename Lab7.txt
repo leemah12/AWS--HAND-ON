@@ -1,0 +1,82 @@
+Lab 7
+Step 1
+On VScode terminal navigate to directory AWSLabs and run command git pull https://github.com/awscloudessentials/intro-to-aws-lab.git
+Open the new file(Lab7) in the editor, to allow you add steps you took to complete the lab.
+
+
+Step 2 (Create LT)
+On EC2 dashboard click on Launch Template
+Create Launch template with name ASG-LT with description "Webservers for ASG"
+Select Amazon linux 2 AMI
+For instance type select "t2.micro"
+With SG that allows SSH from 0.0.0.0/0
+Paste script below under user data
+#!/bin/bash
+# Please make sure to launch Amazon Linux 2
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
+echo "<h1>Healthy</h1>" > /var/www/html/health.html
+
+Create Launch template
+
+Step 3 (Create  TG)
+On EC2 dashboard click on Target groups
+Create a target group with name ASG-TG
+Leave selections as default
+Add the health check path /health.html
+Do not register any target instances and 
+Create Target Group
+
+Step 4 (Create ALB)
+On EC2 dashboard click on Load Balancers
+Select Application Load balancer , give it the name ASG-ALB
+Leave selections as default (internet-facing and IPv4), select your VPC and subnets
+Note the name of the SG assigned to the ALB
+Select the Target group created in Step 3
+Create Load balancer
+
+Step 5 (Create ASG)
+On EC2 dashboard click on Auto Scaling Groups
+Give it name ASG and select the Launch Template created in step 2
+Select your VPC and subnets -->Next -->Attach to an existing LB --> Select target group --> Next
+For desired capacity =2
+Minimum capacity = 2
+Maximum capacity = 2
+Under Scaling policies--> Target tracking scaling policy --> metric type -->Average CPU --> target value -->30
+Next
+Create Auto scaling group
+
+STep 6 (Integration)
+Verify that desired number of EC2 is launching
+Modify the security group of the instances, edit inbound rules and add rule --> All traffic from the SG of the ALB
+Copy the DNS name of the ALB and paste on a new webpage.
+Paste screenshot (showing private IP address of instance 1)
+Refresh to verify that the ALB is balancing between your 2 EC2 instances
+Paste screenshot (showing private IP address of instance 2)
+
+Step 7 (Verify ASG functionality)
+SSH into one of your EC2
+Run the below stress test on the instance
+sudo amazon-linux-extras install epel -y
+THEN
+sudo yum install stress -y
+THEN
+sudo stress --cpu 2 --timeout 200
+
+Verify that the EC2 you ran the test on is being terminated while a new EC2 is being spun up on the EC2 dashboard.
+Paste screenshot
+Refresh the page with the  ALB DNS name , and verify that the ALB is balancing to the new EC2
+Paste screenshot (showing private IP address of new instance )
+
+Step 8
+Once confirmed, kindly clean up your AWS account.
+Edit the file in VSCode editor, save and push to your personal remote repo.
+
+
+
+
+
+
