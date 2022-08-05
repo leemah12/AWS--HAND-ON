@@ -50,5 +50,7 @@ Send screenshot
 Step 7
 Once confirmed, kindly clean up your AWS account.(Remember to delete your Elastic IP manually)
 Edit the text file in VSCode editor, save and push to your personal remote repo.
-
+git add .
+git commit -m "message"
+git push "url" of your repo
 
