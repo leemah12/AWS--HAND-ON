@@ -1,0 +1,66 @@
+Lab 8
+Step 1
+On VScode terminal navigate to directory AWSLabs and run command git pull https://github.com/awscloudessentials/intro-to-aws-lab.git
+Open the new file(Lab8) in the editor, to allow you add steps you took to complete the lab.
+
+
+Step 2
+Go to EC2 dashboard and launch an EC2 instance with name "Webserver"
+SG should allow web access from 0.0.0.0/0
+
+Step 3
+Go to IAM dashboard, click on Roles--> click create Roles --> Next
+Select AWS service -->select EC2--> click Next
+Search and select AmazonSSMManagedInstanceCore --> Next
+Assign the Role name "SSM-EC2-Access"
+Create Role
+
+Step3
+Go back to your EC2, select the EC2 --> click Actions button
+Scroll to Security --> click Modify IAM role
+Click on the drop down button, select role created in step 3
+Click Update IAM Role
+Click on the security beside the Details tab of your EC2 dashboard to verify the IAM Role was attached.
+Send screenshot
+
+Step 4
+Go to AWS System Manager Dashboard
+Under "Node Management" click Fleet Manager
+Wait for about 5-15 minutes for your instance to show under Managed nodes, by clicking on the refresh button on the Fleet Manager dashboard.
+Send screenshot for confirmation
+
+Step 5
+Click on Run Command under Node Management
+Search and select for AWS-RunShellScript
+Under Command parameters paste the script below
+
+#!/bin/bash
+# Please make sure to launch Amazon Linux 2
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello World from $(hostname -f). This webserver was installed with AWS System Manager</h1>" > /var/www/html/index.html
+
+Scroll to Targets--> select Choose instances manually
+Select your instance
+Scroll to output options --> unselect Enable an S3 bucket
+Click on Run
+
+Step 6
+Refresh the Run Command dashboard to show Success
+Post screenshot
+Copy your EC2 public IP or DNS name and paste on a fresh webpage
+Send screenshot
+Copy your EC2 public IP or DNS name and send for confirmation.
+
+Step 7
+Once confirmed, kindly clean up your AWS account.
+Edit the file in VSCode editor, save and push to your personal remote repo.
+
+
+
+
+
+
+
