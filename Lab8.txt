@@ -28,9 +28,9 @@ Go to AWS System Manager Dashboard
 Under "Node Management" click Fleet Manager
 Wait for about 5-15 minutes for your instance to show under Managed nodes, by clicking on the refresh button on the Fleet Manager dashboard.
 Send screenshot for confirmation
-
-Step 5
-Click on Run Command under Node Management
+select the instance
+click on node actions
+click on "execute run command"
 Search and select for AWS-RunShellScript
 Under Command parameters paste the script below
 

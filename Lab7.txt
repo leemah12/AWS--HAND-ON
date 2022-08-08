@@ -74,7 +74,7 @@ Paste screenshot (showing private IP address of new instance )
 Step 8
 Once confirmed, kindly clean up your AWS account.
 Edit the file in VSCode editor, save and push to your personal remote repo.
-git add .. (to save changes of the file)
+git add . (to save changes of the file)
 git commit -m "message"
 git push "url"
 
