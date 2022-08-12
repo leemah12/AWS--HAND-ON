@@ -61,6 +61,8 @@ Save changes and verify if you have access via the object url
 
 
 Step 6
+you can also confirm if your bucket policy is working by edditing the "effect" as "Deny" on your json DOC
+confirmm with the url. bucket would not be able to be viewed.
 Once confirmed, kindly clean up your AWS account.Delete your object and bucket.
 Edit the file in VSCode editor, save and push to your personal remote repo.
 
