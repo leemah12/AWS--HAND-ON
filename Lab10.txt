@@ -20,12 +20,14 @@ then,
 sudo ./aws/install
 then,
 aws --version
+Reference:https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
 To set up a default profile, run the commands below
 aws configure
 (input the AWS Access Key ID,AWS Secret Access Key inside the .csv file downloaded in step 2)
 for Default region name(input us-east-1) or any other region you normal work with
 for Default output format(input json or yaml)
+Reference:https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 
 Step 4 (Verification of profile setup)
 On the terminal run command 
