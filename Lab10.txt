@@ -40,4 +40,6 @@ post screen shot
 Step 5
 Once confirmed, kindly clean up your AWS account.Delete your bucket ONLY	.
 Edit the file in VSCode editor, save and push to your personal remote repo.
+git add git commit -m ""
+git push url
 
