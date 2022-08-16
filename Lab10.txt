@@ -1,0 +1,43 @@
+Lab 10
+Step 1
+On VScode terminal navigate to directory AWSLabs and run command git pull https://github.com/awscloudessentials/intro-to-aws-lab.git
+Open the new file(Lab10) in the editor, to allow you add steps you took to complete the lab.
+
+Step 2 (Creating AWS programmatic access credentials)---Ignore if you already have AWS programmatic credentials
+Click on your account name on the top right of your AWS account.
+Scroll down and click on Security credentials
+Scroll down to "Create access key"
+Download the newly created .csv file into your local system and save.
+
+Step 3 (AWS Cli Install)--Ignore if you already have AWSCli installed on your local machine
+Open a WSL terminal on VS Code,and run the following commands
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+then,
+sudo apt install unzip
+then,
+unzip awscliv2.zip
+then,
+sudo ./aws/install
+then,
+aws --version
+Reference:https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+To set up a default profile, run the commands below
+aws configure
+(input the AWS Access Key ID,AWS Secret Access Key inside the .csv file downloaded in step 2)
+for Default region name(input us-east-1) or any other region you normal work with
+for Default output format(input json or yaml)
+Reference:https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+
+Step 4 (Verification of profile setup)
+On the terminal run command 
+aws s3 ls
+then go to your AWS s3 dashboard and create a bucket
+then run the command above again.
+post screen shot
+
+
+Step 5
+Once confirmed, kindly clean up your AWS account.Delete your bucket ONLY	.
+Edit the file in VSCode editor, save and push to your personal remote repo.
+
