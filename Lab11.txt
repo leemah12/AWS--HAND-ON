@@ -1,0 +1,78 @@
+Lab11a
+Step 1
+On VScode terminal navigate to directory AWSLabs and run command git pull https://github.com/awscloudessentials/intro-to-aws-lab.git
+Open the new file(Lab11) in the editor, to allow you add steps you took to complete the lab.
+
+
+Step 2
+Go to EC2 dashboard and launch a Linux EC2 instance with name "SSMtest"
+SG should allow SSH access from 0.0.0.0/0
+Do not assign a key pair to the instance, select  " Proceed without a keypair"
+
+Step 3 (if the role you created in Lab8 still exists,skip this step)
+Go to IAM dashboard, click on Roles--> click create Roles --> Next
+Select AWS service -->select EC2--> click Next
+Search and select AmazonSSMManagedInstanceCore --> Next
+Assign the Role name "SSM-EC2-Access"
+Create Role
+
+Step3
+Go back to your EC2, select the EC2 --> click Actions button
+Scroll to Security --> click Modify IAM role
+Click on the drop down button, select role created in step 3
+Click Update IAM Role
+Click on the security beside the Details tab of your EC2 dashboard to verify the IAM Role was attached.
+Send screenshot
+
+Step4
+On your EC2 dashboard, select your EC2--> click on Actions --> Connect
+Click on the Session Manager portion and send screenshot
+Click connect
+run the following commands 
+
+sudo touch ssmtest
+ls | grep ssmtest
+
+Send screenshot
+
+Step 5
+Step 7
+Once confirmed, terminate your EC2 instance.
+
+
+Lab 11b
+Step 1
+On your EC2 dashboard, click launch instance
+Give it the name "Windows-server"
+Scroll to Application and OS Images and click browse AMI's --> select "Microsoft Windows Server 2019 Base" with the free tier eligible tag
+Scroll to Key pair and create a new key pair 
+Create SG allowing RDP traffic from 0.0.0.0/0
+Launch instance
+ 
+Step 2
+Select the newly launched Windows server and click on Actions
+Click Connect --> click RDP client
+Download the remote desktop file on your local machine(this will open up a window)--> click continue and click connect anyways
+Go back to the AWS console and click "Get password"
+Browse to the key pair you created in step 1,and select it
+Click "Decrypt password" ,
+Copy the decripted password and paste on the RDP client window.
+Click connect
+This should connect you to your windows server.
+Send screenshot
+
+
+Step 3
+Once confirmed, terminate your EC2 instance.
+Edit the file in VSCode editor, save and push to your personal remote repo.
+
+
+
+
+
+
+
+
+
+
+
