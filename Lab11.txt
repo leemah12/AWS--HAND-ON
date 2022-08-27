@@ -65,7 +65,9 @@ Send screenshot
 Step 3
 Once confirmed, terminate your EC2 instance.
 Edit the file in VSCode editor, save and push to your personal remote repo.
-
+git add "file.txt"
+git commit -m ""
+git push url
 
 
 
