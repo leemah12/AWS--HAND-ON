@@ -1,0 +1,153 @@
+Lab12
+Step 1
+On VScode terminal navigate to directory AWSLabs and run command git pull https://github.com/awscloudessentials/intro-to-aws-lab.git
+Open the new file(Lab12) in the editor, to allow you add steps you took to complete the lab.
+Create a new VPC with 10.0.0.0/16 IP block
+Click on "create VPC"
+Select VPC only, give it a name tag "projectVPC"
+Under IPv4 CIDR input 10.0.0.0/16
+Scroll down and click "Create VPC"
+
+
+Step 2(Create 2 Subnets in AZ A- name public01 and private01 respectively)
+Click on subnets--> create subnets
+Select the project VPC from the drop down button.
+Give the subnet a name "public01"
+Select an availabilty zone from the dropdown button
+Enter "10.0.1.0/24" in the IPv4 CIDR block tab
+ Click "Add new subnet"
+Give it the name "private01"
+Select the same AZ as above
+Enter "10.0.3.0/24" in the IPv4 CIDR block tab
+(Create 2 Subnets in AZ B- name public02 and private 02 respectively)
+ Click "Add new subnet"
+Give it the name "public02"
+Select another AZ different from the one above
+Enter "10.0.2.0/24" in the IPv4 CIDR block tab
+ Click "Add new subnet"
+Give it the name "private02"
+Select the same AZ as above
+Enter "10.0.4.0/24" in the IPv4 CIDR block tab
+Click "Create subnet"
+
+Step 3(Create an IGW and attach to the VPC)
+Click on IGW --> Create internet gateway
+Give it the name "project-IGW"
+Click Create
+Select the newly created IGW --> click Actions tab --> Attach to VPC
+Select the project VPC and click Attach IGW
+
+Step 4(Edit the new VPC RT by adding 0.0.0.0/0 to the IGW)
+Open the VPC dashboard and click on the route table attached to your project VPC
+Click on the "Routes" tab --> edit routes --> Add route
+Input 0.0.0.0/0 and select your project IGW
+Click Save changes
+
+Step 5(Create a NATGW in one of the public subnet-this will create an elastic IP attachment)
+Click on NAT gateway--> Create NAT gateway
+Give it the name "projectNAT"
+Under subnet, select the Public01 subnet
+Click "Allocate Elastic IP"
+Click on create NAT gateway
+
+Step 6(Create a new RT with new VPC route and 0.0.0.0/0 to the NATGW)
+Click on Route tables --> Create route table
+Give it the name "privateRT"
+Select your project VPC
+Click create RT
+Click "Edit routes" --> Add route 
+Input 0.0.0.0/0 and select NAT gateways and click the projectNAT
+Save changes
+(Edit the RT on the Private01 and Private02 subnets to the privateRT)
+On the Route tables dashboard, select your new VPC route table
+Click Subnet associations
+Scroll down to explicit subnet associations --> Edit subnet associations
+Select public01 and public02  --> Save associations
+Then select the RT with the name "privateRT"
+Click Subnet associations
+Scroll down to explicit subnet associations --> Edit subnet associations
+Select private01 and private02  --> Save associations
+Now verify that the routes to 0.0.0.0/0 on privateRT has destination of NATGW
+And the that the routes to 0.0.0.0/0 on the new VPC route table has destination of IGW
+Verify that each route tabla has the correct subnets associated
+Private subnets to privateRT
+Public subnets to ProjectVPC route table
+
+Step 7(Create/Bootstrap 2 EC2 IS with private IP addy only in each Private subnet with advanced details for http install)
+For the 1st EC2
+Select the project VPC
+Select Private01 subnet
+Proceed without a keypair
+Attach the user script below
+#!/bin/bash  
+yum update -y
+yum install httpd -y
+echo "<html><body><h1>Wow I did it once</h1></body></html>" >/var/www/html/index.html
+echo "<h1>Healthy</h1>" > /
+systemctl start httpd
+systemctl enable httpd
+
+For the 2nd EC2
+Select the project VPC
+Select Private02 subnet
+Click Select existing security group
+Select the same security group created in the 1st EC2 above
+Proceed without a keypair
+Attach the user script below
+#!/bin/bash  
+yum update -y
+yum install httpd -y
+echo "<html><body><h1>Wow I did it twice</h1></body></html>" >/var/www/html/index.html
+echo "<h1>Healthy</h1>" > /
+systemctl start httpd
+systemctl enable httpd
+
+Step 8 (Create a target group and register the EC2 instances)
+Give it the name projectTG
+Select your projectVPC
+Click Next and select your 2 private EC2, include as pending, then register the pending targets.
+
+
+
+Step 9(Create an ALB and add the target group)
+Give it the name projectALB
+Select the projectVPC
+Select the subnets 
+Under security ,select the SG attached to the  projectVPC
+Under listeners and routing, select your target group 
+Create Load Balancer
+
+
+
+Step 10
+Modify the ALB SG to allow HTTP inbound traffic from all IPv4 and all IPv6
+Verify private EC2 has SG inbound for all traffic from VPC SG
+
+Step 11
+Screenshot your webserver images for verification
+Once confirmed, terminate your EC2 instance.
+Edit the file in VSCode editor, save and push to your personal remote repo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
