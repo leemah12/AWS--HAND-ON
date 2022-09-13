@@ -112,7 +112,9 @@ Click Next and select your 2 private EC2, include as pending, then register the 
 Step 9(Create an ALB and add the target group)
 Give it the name projectALB
 Select the projectVPC
+select the two AZ
 Select the subnets 
+select the 2 public subnet
 Under security ,select the SG attached to the  projectVPC
 Under listeners and routing, select your target group 
 Create Load Balancer
