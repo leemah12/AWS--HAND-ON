@@ -32,4 +32,7 @@ also paste on the browser and screenshot to the group
 
 Step 5
 Edit the file in VSCode editor, save and push to your personal remote repo.
+git add Lab13.txt
+git commit -m 
+git push "url"
 
