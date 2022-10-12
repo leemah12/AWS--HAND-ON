@@ -1,0 +1,35 @@
+Step 1 
+In VScode terminal,cd into the directory "intro-to-aws-lab"and run command 
+"git pull https://github.com/awscloudessentials/intro-to-aws-lab.git" to pull the Lab13.txt file into your local machine
+Open the  .txt file in VScode editor and follow instructions to finish the lab.
+
+Step 2
+create an S3 bucket name "demo-oneOfYourNames-lab13.com" (bucket name must be unique)
+uncheck block all public access
+check the acknowledgement
+click on create bucket
+
+Step 3
+go to the bucket you just created and upload the download files from the group "coffee.jpg", "index.html", "error.html" and  "extra-page.html"
+click on properties tab, scrol down to static website hosting, click on edit
+check enable
+type index.html, type error.html and click save
+
+Step 4
+click on permissions tab
+go to bucket policy, click on edit
+copy bucket ARN 
+click on policy generator
+select "S3 Bucket policy"
+on effect select "allow"
+on principal type "*"
+on action checked "GetObject"
+paste the copied ARN and add "/*" at the end (arn:aws:s3:::demo-george-lab13.com/*)
+click on "add statement", click on generate policy and copy the generated policy
+go back to buckt policy and paste the generated policy (ensure that your cusor is at the beginning no space at the first line)
+click on properties, scroll to static website hosting and copy the url below, paste it on the group for 2 or more members to confirmed
+also paste on the browser and screenshot to the group
+
+Step 5
+Edit the file in VSCode editor, save and push to your personal remote repo.
+
